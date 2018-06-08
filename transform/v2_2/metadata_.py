@@ -160,6 +160,9 @@ def Override(data,
   # pytype: disable=attribute-error
   if options.entrypoint:
     output['config']['Entrypoint'] = options.entrypoint
+    # Cmd is cleared whenever Entrypoint changes.
+    # https://github.com/moby/moby/issues/19611#issuecomment-174244260
+    output['config'].pop('Cmd', None)
   if options.cmd:
     output['config']['Cmd'] = options.cmd
   if options.user:
