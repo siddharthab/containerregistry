@@ -17,7 +17,7 @@ def repositories():
       name = "httplib2",
       url = "https://codeload.github.com/httplib2/httplib2/tar.gz/v0.10.3",
       sha256 = "d1bee28a68cc665c451c83d315e3afdbeb5391f08971dcc91e060d5ba16986f1",
-      strip_prefix = "httplib2-0.10.3/python2/httplib2/",
+      strip_prefix = "httplib2-0.10.3/python3/httplib2/",
       type = "tar.gz",
       build_file_content = """
 py_library(
@@ -66,21 +66,6 @@ py_library(
      "@httplib2//:httplib2",
      "@six//:six",
    ]
-)"""
-  )
-
-  # Used for parallel execution in containerregistry
-  native.new_http_archive(
-      name = "concurrent",
-      url = "https://codeload.github.com/agronholm/pythonfutures/tar.gz/3.0.5",
-      sha256 = "a7086ddf3c36203da7816f7e903ce43d042831f41a9705bc6b4206c574fcb765",
-      strip_prefix = "pythonfutures-3.0.5/concurrent/",
-      type = "tar.gz",
-      build_file_content = """
-py_library(
-   name = "concurrent",
-   srcs = glob(["**/*.py"]),
-   visibility = ["//visibility:public"]
 )"""
   )
 
